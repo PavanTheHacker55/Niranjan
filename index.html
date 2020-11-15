@@ -1,263 +1,968 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Cyber Fox Technology</title>
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="AI Center Fellow, Microsoft Research India">
-    <meta name="author" content="Sebastin Santy">
-    <meta name="theme-color" content="#222222">
+          <style>
+@import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+ 
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+html {
+	font-size: 10px;
+	font-family: 'Montserrat', sans-serif;
+	scroll-behavior: smooth;
+}
+a {
+	text-decoration: none;
+}
+.container {
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+p {
+	color: black;
+	font-size: 1.4rem;
+	margin-top: 5px;
+	line-height: 2.5rem;
+	font-weight: 300;
+	letter-spacing: .05rem;
+}
+.section-title {
+	font-size: 4rem;
+	font-weight: 300;
+	color: black;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+	letter-spacing: .2rem;
+	text-align: center;
+}
+.section-title span {
+	color: orange;
+}
 
-    <link rel="apple-touch-icon" sizes="180x180" href="images/nicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/nicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/nicons/favicon-16x16.png">
+.cta {
+	display: inline-block;
+	padding: 10px 30px;
+	color: white;
+	background-color: transparent;
+	border: 2px solid orange;
+	font-size: 2rem;
+	text-transform: uppercase;
+	letter-spacing: .1rem;
+	margin-top: 30px;
+	transition: .3s ease;
+	transition-property: background-color, color;
+}
+.cta:hover {
+	color: white;
+	background-color: orange;
+}
+.brand h1 {
+	font-size: 3rem;
+	text-transform: uppercase;
+	color: white;
+}
+.brand h1 span {
+	color: crimson;
+}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/style-3.css">
-      
-    <title>Sebastin Santy</title>
+/* Header section */
+#header {
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: auto;
+}
+#header .header {
+	min-height: 8vh;
+	background-color: rgba(31, 30, 30, 0.24);
+	transition: .3s ease background-color;
+}
+#header .nav-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+	max-width: 1300px;
+	padding: 0 10px;
+}
+#header .nav-list ul {
+	list-style: none;
+	position: absolute;
+	background-color: rgb(31, 30, 30);
+	width: 100vw;
+	height: 100vh;
+	left: 100%;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+	overflow-x: hidden;
+	transition: .5s ease left;
+}
+#header .nav-list ul.active {
+	left: 0%;
+}
+#header .nav-list ul a {
+	font-size: 2.5rem;
+	font-weight: 500;
+	letter-spacing: .2rem;
+	text-decoration: none;
+	color: white;
+	text-transform: uppercase;
+	padding: 20px;
+	display: block;
+}
+#header .nav-list ul a::after {
+	content: attr(data-after);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0);
+	color: rgba(240, 248, 255, 0.021);
+	font-size: 13rem;
+	letter-spacing: 50px;
+	z-index: -1;
+	transition: .3s ease letter-spacing;
+}
+#header .nav-list ul li:hover a::after {
+	transform: translate(-50%, -50%) scale(1);
+	letter-spacing: initial;
+}
+#header .nav-list ul li:hover a {
+	color: orange;
+}
+#header .hamburger {
+	height: 60px;
+	width: 60px;
+	display: inline-block;
+	border: 3px solid white;
+	border-radius: 50%;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 100;
+	cursor: pointer;
+	transform: scale(.8);
+	margin-right: 20px;
+}
+#header .hamburger:after {
+	position: absolute;
+	content: '';
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+	border: 3px solid white;
+	animation: hamburger_puls 1s ease infinite;
+}
+#header .hamburger .bar {
+	height: 2px;
+	width: 30px;
+	position: relative;
+	background-color: white;
+	z-index: -1;
+}
+#header .hamburger .bar::after,
+#header .hamburger .bar::before {
+	content: '';
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	background-color: white;
+	transition: .3s ease;
+	transition-property: top, bottom;
+}
+#header .hamburger .bar::after {
+	top: 8px;
+}
+#header .hamburger .bar::before {
+	bottom: 8px;
+}
+#header .hamburger.active .bar::before {
+	bottom: 0;
+}
+#header .hamburger.active .bar::after {
+	top: 0;
+}
+/* End Header section */
+
+/* Hero Section */
+#hero {
+	background-image: url(https://cdn.pixabay.com/photo/2018/05/14/16/25/cyber-security-3400657_1280.jpg);
+	background-size: cover;
+	background-position: top center;
+	position: relative;
+	z-index: 1;
+}
+#hero::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	opacity: .7;
+	z-index: -1;
+}
+#hero .hero {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 50px;
+	justify-content: flex-start;
+}
+#hero h1 {
+	display: block;
+	width: fit-content;
+	font-size: 4rem;
+	position: relative;
+	color: transparent;
+	animation: text_reveal .5s ease forwards;
+	animation-delay: 1s;
+}
+#hero h1:nth-child(1) {
+	animation-delay: 1s;
+}
+#hero h1:nth-child(2) {
+	animation-delay: 2s;
+}
+#hero h1:nth-child(3) {
+	animation: text_reveal_name .5s ease forwards;
+	animation-delay: 3s;
+}
+#hero h1 span {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 0;
+	background-color: Orange;
+	animation: text_reveal_box 1s ease;
+	animation-delay: .5s;
+}
+#hero h1:nth-child(1) span {
+	animation-delay: .5s;
+}
+#hero h1:nth-child(2) span {
+	animation-delay: 1.5s;
+}
+#hero h1:nth-child(3) span {
+	animation-delay: 2.5s;
+}
+
+/* End Hero Section */
+
+/* Services Section */
+#services .services {
+	flex-direction: column;
+	text-align: center;
+	max-width: 1500px;
+	margin: 0 auto;
+	padding: 100px 0;
+}
+#services .service-top {
+	max-width: 500px;
+	margin: 0 auto;
+}
+#services .service-bottom {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 50px;
+}
+#services .service-item {
+	flex-basis: 80%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	padding: 30px;
+	border-radius: 10px;
+	background-image: url(./img/img-1.png);
+	background-size: cover;
+	margin: 10px 5%;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+#services .service-item::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	opacity: .9;
+	z-index: -1;
+}
+#services .service-bottom .icon {
+	height: 80px;
+	width: 80px;
+	margin-bottom: 20px;
+}
+#services .service-item h2 {
+	font-size: 2rem;
+	color: white;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+}
+#services .service-item p {
+	color: white;
+	text-align: left;
+}
+/* End Services Section */
+
+/* Projects section */
+#projects .projects {
+	flex-direction: column;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 100px 0;
+}
+#projects .projects-header h1 {
+	margin-bottom: 50px;
+}
+#projects .all-projects {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+#projects .project-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 80%;
+	margin: 20px auto;
+	overflow: hidden;
+	border-radius: 10px;
+}
+#projects .project-info {
+	padding: 30px;
+	flex-basis: 50%;
+	height: 100%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	color: white;
+}
+#projects .project-info h1 {
+	font-size: 4rem;
+	font-weight: 500;
+}
+#projects .project-info h2 {
+	font-size: 1.8rem;
+	font-weight: 500;
+	margin-top: 10px;
+}
+#projects .project-info p {
+	color: white;
+}
+#projects .project-img {
+	flex-basis: 50%;
+	height: 300px;
+	overflow: hidden;
+	position: relative;
+}
+#projects .project-img:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	opacity: .7;
+}
+#projects .project-img img {
+	transition: .3s ease transform;
+}
+#projects .project-item:hover .project-img img {
+	transform: scale(1.1);
+}
+/* End Projects section */
+
+/* About Section */
+#about .about {
+	flex-direction: column-reverse;
+	text-align: center;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 100px 20px;
+}
+#about .col-left {
+	width: 250px;
+	height: 360px;
+}
+#about .col-right {
+	width: 100%;
+}
+#about .col-right h2 {
+	font-size: 1.8rem;
+	font-weight: 500;
+	letter-spacing: .2rem;
+	margin-bottom: 10px;
+}
+#about .col-right p {
+	margin-bottom: 20px;
+}
+#about .col-right .cta {
+	color: black;
+	margin-bottom: 50px;
+	padding: 10px 20px;
+	font-size: 2rem;
+}
+#about .col-left .about-img {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	border: 10px solid white;
+}
+#about .col-left .about-img::after {
+	content: '';
+	position: absolute;
+	left: -33px;
+	top: 15px;
+	height: 98%;
+	width: 98%;
+	border: 7px solid orange;
+	z-index: -1;
+}
+/* End About Section */
+
+/* contact Section */
+#contact .contact {
+	flex-direction: column;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+#contact .contact-items {
+	width: 400px;
+}
+#contact .contact-item {
+	width: 80%;
+	padding: 20px;
+	text-align: center;
+	border-radius: 10px;
+	padding: 30px;
+	margin: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	box-shadow: 0px 0px 18px 0 #0000002c;
+	transition: .3s ease box-shadow;
+}
+#contact .contact-item:hover {
+	box-shadow: 0px 0px 5px 0 #0000002c;
+}
+#contact .icon {
+	width: 70px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+#contact .contact-info h1 {
+	font-size: 2.5rem;
+	font-weight: 500;
+	margin-bottom: 5px;
+}
+#contact .contact-info h2 {
+	font-size: 1.3rem;
+	line-height: 2rem;
+	font-weight: 500;
+}
+/*End contact Section */
+
+/* Footer */
+#footer {
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+}
+#footer .footer {
+	min-height: 200px;
+	flex-direction: column;
+	padding-top: 50px;
+	padding-bottom: 10px;
+}
+#footer h2 {
+	color: white;
+	font-weight: 500;
+	font-size: 1.8rem;
+	letter-spacing: .1rem;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#footer .social-icon {
+	display: flex;
+	margin-bottom: 30px;
+}
+#footer .social-item {
+	height: 50px;
+	width: 50px;
+	margin: 0 5px;
+}
+#footer .social-item img {
+	filter: grayscale(1);
+	transition: .3s ease filter;
+}
+#footer .social-item:hover img {
+	filter: grayscale(0);
+}
+#footer p {
+	color: white;
+	font-size: 1.3rem;
+}
+/* End Footer */
+
+/* Keyframes */
+@keyframes hamburger_puls {
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1.4);
+	}
+}
+@keyframes text_reveal_box {
+	50% {
+		width: 100%;
+		left: 0;
+	}
+	100% {
+		width: 0;
+		left: 100%;
+	}
+}
+@keyframes text_reveal {
+	100% {
+		color: white;
+	}
+}
+@keyframes text_reveal_name {
+	100% {
+		color: orange;
+		font-weight: 500;
+	}
+}
+/* End Keyframes */
+
+/* Media Query For Tablet */
+@media only screen and (min-width: 768px) {
+	.cta {
+		font-size: 2.5rem;
+		padding: 20px 60px;
+	}
+	h1.section-title {
+		font-size: 6rem;
+	}
+
+	/* Hero */
+	#hero h1 {
+		font-size: 7rem;
+	}
+	/* End Hero */
+
+	/* Services Section */
+	#services .service-bottom .service-item {
+		flex-basis: 45%;
+		margin: 2.5%;
+	}
+	/* End Services Section */
+
+	/* Project */
+	#projects .project-item {
+		flex-direction: row;
+	}
+	#projects .project-item:nth-child(even) {
+		flex-direction: row-reverse;
+	}
+	#projects .project-item {
+		height: 400px;
+		margin: 0;
+		width: 100%;
+		border-radius: 0;
+	}
+	#projects .all-projects .project-info {
+		height: 100%;
+	}
+	#projects .all-projects .project-img {
+		height: 100%;
+	}
+	/* End Project */
+
+	/* About */
+	#about .about {
+		flex-direction: row;
+	}
+	#about .col-left {
+		width: 600px;
+		height: 400px;
+		padding-left: 60px;
+	}
+	#about .about .col-left .about-img::after {
+		left: -45px;
+		top: 34px;
+		height: 98%;
+		width: 98%;
+		border: 10px solid crimson;
+	}
+	#about .col-right {
+		text-align: left;
+		padding: 30px;
+	}
+	#about .col-right h1 {
+		text-align: left;
+	}
+	/* End About */
+
+	/* contact  */
+	#contact .contact {
+		flex-direction: column;
+		padding: 100px 0;
+		align-items: center;
+		justify-content: center;
+		min-width: 20vh;
+	}
+	#contact .contact-items {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		margin: 0;
+	}
+	#contact .contact-item {
+		width: 30%;
+		margin: 0;
+		flex-direction: row;
+	}
+	#contact .contact-item .icon {
+		height: 100px;
+		width: 100px;
+	}
+	#contact .contact-item .icon img {
+		object-fit: contain;
+	}
+	#contact .contact-item .contact-info {
+		width: 100%;
+		text-align: left;
+		padding-left: 20px;
+	}
+	/* End contact  */
+}
+/* End Media Query For Tablet */
+
+/* Media Query For Desktop */
+@media only screen and (min-width: 1200px) {
+	/* header */
+	#header .hamburger {
+		display: none;
+	}
+	#header .nav-list ul {
+		position: initial;
+		display: block;
+		height: auto;
+		width: fit-content;
+		background-color: transparent;
+	}
+	#header .nav-list ul li {
+		display: inline-block;
+	}
+	#header .nav-list ul li a {
+		font-size: 1.8rem;
+	}
+	#header .nav-list ul a:after {
+		display: none;
+	}
+	/* End header */
+
+	#services .service-bottom .service-item {
+		flex-basis: 22%;
+		margin: 1.5%;
+	}
+}
+/* End  Media Query For Desktop */
+
+         </style>
   </head>
-  <body>
-    <!-- <h1>Hello, world!</h1> -->
-    <div class="container pt-5 allstuffp">
-        <div class="row pt-5 allstuff">
-            <div class="col-md-4 pt-5">
-                <div class="fixed-posi">
-                <p class="name">Sebastin Santy</p>
-                <img src="images/profile-pixel.png" class="profilepic pt-3 pb-2">
-                <div class="pt-5 menur"><a class="menulink" target="_blank" href="assets/sebastin_cv.pdf">curriculum vitae</a></div>
-                <div class=""><a class="menulink" target="_blank" href="https://scholar.google.com/citations?user=HsyMg08AAAAJ">google scholar</a></div>
-                <div class=""><a class="menulink" target="_blank" href="mailto:hi@sebast.in">email address</a></div>
-                <div class=""><a class="menulink" target="_blank" href="https://github.com/sebastinsanty">github profile</a></div>
-                <div class=""><a class="menulink" target="_blank" href="https://www.linkedin.com/in/sebastinsanty/">linkedin</a></div>
-                <div class=""><a class="menulink" target="_blank" href="https://twitter.com/sebastinsanty">twitter</a></div>
-                
+<body>
 
-                <!-- <div class="pt-5">usercontext</div> -->
-                <!-- <div class="">travel history</div> -->
-                <!-- <div class="">this template</div> -->
-                </div>
-            </div>
-            <div class="col-md-8 pt-5 about">
-                 I am a pre-doctoral <a class="in-text" href="https://www.microsoft.com/en-us/research/group/scai/"
-                     target="_blank">AI Center</a> Fellow at <a class="in-text"
-                     href="https://www.microsoft.com/en-us/research/lab/microsoft-research-india/"
-                     target="_blank">Microsoft Research India</a>, where I work with <a class="in-text"
-                     href="https://www.microsoft.com/en-us/research/people/kalikab/" target="_blank">Kalika Bali</a> and
-                 <a class="in-text" href="https://www.microsoft.com/en-us/research/people/monojitc/"
-                     target="_blank">Monojit Choudhury</a>. I am interested in working on problems that focus on
-                 democratizing language technologies. <br> <br>
-
-
-                 I have been fortunate to work with an amazing set of researchers in the past. I did my bachelor thesis
-                 at <a class="in-text" href="https://www.cmu.edu/" target="_blank">Carnegie Mellon University</a> where
-                 I was advised by <a class="in-text" href="http://www.cs.cmu.edu/~dst/" target="_blank">Dave
-                     Touretzky</a>. I also interned at <a class="in-text" href="https://www.ucl.ac.uk/"
-                     target="_blank">University College London</a> with <a class="in-text"
-                     href="https://emineyilmaz.cs.ucl.ac.uk" target="_blank">Emine Yilmaz</a> and <a class="in-text"
-                     href="http://rishabhmehrotra.com/" target="_blank">Rishabh Mehrotra</a>. Prior to my time in
-                 research, I spent two summers with <a class="in-text" href="https://summerofcode.withgoogle.com/"
-                     target="_blank">Google Summer of Code</a> working for <a class="in-text"
-                     href="https://julialang.org/" target="_blank">Julia Language</a> and <a class="in-text"
-                     href="https://www.mozilla.org/" target="_blank">Mozilla</a>. <br><br>
-
-                 I graduated with a B.Tech (Hons.) in Electronics and Instrumentation from <a class="in-text"
-                     href="https://www.bits-pilani.ac.in/" target="_blank">BITS Pilani</a>, Goa, India in 2019. For more
-                 details, check my <a class="in-text" href="assets/sebastin_cv.pdf" target="_blank">CV</a> or hit me up
-                 on my <a class="in-text" href="mailto:hi@sebast.in">email</a>.
-
-                 <p class="header pt-5">Publications</p>
-                 <div class="py-2">
-                 <p class="paper my-2 pl-2">
-                     <span class="papertitle">The State and Fate of Linguistic Diversity and Inclusion in the NLP
-                         World</span><br>
-                     Pratik Joshi*, <span class="thisauthor">Sebastin Santy*</span>, Amar Budhiraja*, Kalika Bali, Monojit Choudhury
-                     <span class="noter"> (* = Equal Contribution)</span><br>
-                     <span class="conf"><a class="confshort" href="https://acl2020.org/">ACL'20</a> | Annual Conference of the Association for Computational
-                         Linguistics</span><br>
-                    
-                     <a class="tag" href="https://arxiv.org/pdf/2004.09095.pdf" target="_blank">pdf</a><span class="tagsep">|</span>
-                     <a class="tag" href="https://arxiv.org/abs/2004.09095" target="_blank">abstract</a><span class="tagsep">|</span>
-                     <a class="tag" href="cites/acl2020.bib" target="_blank">cite</a><span class="tagsep">|</span>
-                     <a class="tag" href="https://microsoft.github.io/linguisticdiversity/" target="_blank">website</a>
-                 </p>
-                 </div>
-                 <div class="py-2">
-                 <p class="paper my-2 pl-2">
-                     <span class="papertitle">Learnings from Technological Interventions in a Low Resource
-                         Language</span><br>
-                     Devansh Mehta*, <span class="thisauthor">Sebastin Santy*</span>, Ramaravind Mothilal, Brij Mohan
-                     Lal Srivastava, Alok
-                     Sharma, Anurag Shukla, Vishnu Prasad, Venkanna U, Amit Sharma and Kalika Bali
-                     <span class="noter"> (* = Equal Contribution)</span><br>
-                     <span class="conf"><a class="confshort" href="https://lrec2020.lrec-conf.org/">LREC'20</a> | International Conference on Language
-                         Resources and Evaluation</span><br>
-                    
-                     <a class="tag" href="https://arxiv.org/pdf/2004.10270.pdf" target="_blank">pdf</a><span class="tagsep">|</span>
-                     <a class="tag" href="https://arxiv.org/abs/2004.10270" target="_blank">abstract</a><span class="tagsep">|</span>
-                     <a class="tag" href="cites/lrec2020.bib" target="_blank">cite</a>
-                 </p>
-                 </div>
-                 <div class="py-2">
-                 <p class="paper my-2 pl-2">
-                     <span class="papertitle">Deploying Language Technologies for Underserved Communities</span><br>
-                     Kalika Bali, Monojit Choudhury, Sunayana Sitaram, <span class="thisauthor">Sebastin Santy</span><br>
-                     <span class="conf"><a class="confshort" href="https://en.unesco.org/LT4All">LT4All</a> | UNESCO International Conference on Language
-                         Technologies for All</span><br>
-                     <a class="tag" href="https://en.unesco.org/sites/default/files/lt4all_programme_day2and3.pdf"
-                         target="_blank">proceedings</a><span class="tagsep">|</span>
-                     <a class="tag" href="assets/unesco.pdf" target="_blank">poster</a>
-                 </p>   </div>
-                 <div class="py-2">
-                 <p class="paper my-2 pl-2">
-                     <span class="papertitle">Unsung Challenges of Building and Deploying Language Technologies for Low
-                         Resource Language Communities</span><br>
-                     Pratik Joshi, Christain Barnes, <span class="thisauthor">Sebastin Santy</span>, Simran Khanuja,
-                     Sanket Shah, Anirudh
-                     Srinivasan, Satwik Bhattamishra, Sunayana Sitaram, Monojit Choudhury and Kalika Bali<br>
-                     <span class="conf"><a class="confshort" href="https://ltrc.iiit.ac.in/icon2019/">ICON'19</a> | International Conference on Natural
-                         Language Processing</span><br>
-                     <a class="tag" href="https://arxiv.org/pdf/1912.03457.pdf" target="_blank">pdf</a><span class="tagsep">|</span>
-                     <a class="tag" href="https://arxiv.org/abs/1912.03457" target="_blank">abstract</a><span class="tagsep">|</span>
-                     <a class="tag" href="cites/icon2019.bib" target="_blank">cite</a>
-                 </p>
-                 </div>
-                 <div class="py-2">
-                 <p class="paper my-2 pl-2">
-                     <span class="papertitle">CoSSAT: Code-Switched Speech Annotation Tool</span><br>
-                     Sanket Shah, Pratik Joshi, <span class="thisauthor">Sebastin Santy</span>, Sunayana Sitaram<br>
-                     <span class="conf"><a class="confshort" href="https://www.emnlp-ijcnlp2019.org/">AnnoNLP@EMNLP'19</a> | Empirical
-                         Methods in Natural Language
-                             Processing</span><br>
-                     <a class="tag" href="https://www.aclweb.org/anthology/D19-5907.pdf" target="_blank">pdf</a><span class="tagsep">|</span>
-                     <a class="tag" href="https://www.aclweb.org/anthology/D19-5907/" target="_blank">abstract</a><span class="tagsep">|</span>
-                     <a class="tag" href="cites/cossat.bib" target="_blank">cite</a><span class="tagsep">|</span>
-                     <a class="tag" href="assets/cossat.pdf" target="_blank">slides</a>
-                 </p>
-                 </div>
-                 <div class="py-2">
-                 <p class="paper my-2 pl-2">
-                     <span class="papertitle">INMT: Interactive Neural Machine Translation</span><br>
-                     <span class="thisauthor">Sebastin Santy</span>, Sandipan Dandapat, Monojit Choudhury, Kalika Bali<br>
-                     <span class="conf"><a class="confshort" href="https://www.emnlp-ijcnlp2019.org/">EMNLP'19 Demo</a> |
-                         Empirical Methods in Natural Language Processing</span><br>
-                     <a class="tag" href="https://microsoft.github.io/inmt/" target="_blank">website</a><span class="tagsep">|</span>
-                     <a class="tag" href="https://github.com/microsoft/inmt" target="_blank">code</a><span class="tagsep">|</span>
-                     <a class="tag" href="https://www.aclweb.org/anthology/D19-3018.pdf" target="_blank">pdf</a><span class="tagsep">|</span>
-                     <a class="tag" href="https://www.aclweb.org/anthology/D19-3018/" target="_blank">abstract</a><span class="tagsep">|</span>
-                     <a class="tag" href="cites/inmt.bib" target="_blank">cite</a><span class="tagsep">|</span>
-                     <a class="tag" href="assets/inmt_poster.pdf" target="_blank">poster</a>
-                 </p>   </div>
-                 <div class="py-2">
-                 <p class="paper my-2 pl-2">
-                     <span class="papertitle">Towards Task Understanding in Visual Settings</span><br>
-                     <span class="thisauthor">Sebastin Santy</span>, Wazeer Zulfikar, Rishabh Mehrotra, Emine Yilmaz<br>
-                     <span class="conf"><a class="confshort" href="#">AAAI'19 Student Abstract</a> | AAAI Conference on Artificial Intelligence</span> <br>
-                     <a class="tag" href="https://usercontext.github.io/SceneTask/resources/images/manuscript.pdf"
-                         target="_blank">pdf</a><span class="tagsep">|</span>
-                     <a class="tag" href="https://usercontext.github.io/SceneTask/" target="_blank">abstract</a><span class="tagsep">|</span>
-                     <a class="tag" href="cites/aaai2019.bib" target="_blank">cite</a><span class="tagsep">|</span>
-                     <a class="tag" href="https://usercontext.github.io/SceneTask/resources/images/poster.pdf"
-                         target="_blank">poster</a>
-                 </p>   </div>
-                 <div class="py-2">
-                 <p class="paper my-2 pl-2">
-                     <span class="papertitle">DataDepsGenerators.jl: making reusing data easy by automatically
-                         generating DataDeps.jl registration
-                         code</span><br>
-                     Lyndon White, <span class="thisauthor">Sebastin Santy</span><br>
-                     <span class="conf"><a class="confshort" href="#">JOSS'18</a> | Journal of Open Source Software</span> <br>
-                     <a class="tag" href="https://arxiv.org/pdf/1912.03457.pdf" target="_blank">pdf</a><span class="tagsep">|</span>
-                     <a class="tag" href="cites/datadeps.bib" target="_blank">cite</a><span class="tagsep">|</span>
-                     <a class="tag" href="https://www.youtube.com/watch?v=eMtuzjn_Xks" target="_blank">talk</a><span class="tagsep">|</span>
-                     <a class="tag"
-                         href="https://medium.com/@sebastinsanty/google-summer-of-code-2018-julia-computing-report-8d3f553d7050"
-                         target="_blank">blog post</a>
-                 </p>   </div>
-                 <div class="py-2">
-                 <p class="paper my-2 pl-2">
-                     <span class="papertitle">BITS Darshini: A Modular, Concurrent Protocol Analyzer
-                         Workbench</span><br>
-                     Prasad Talasila, Mihir Kakrambe, <span class="thisauthor">Sebastin Santy</span>, Anurag Rai, Neena Goveas, Bharat M
-                     Deshpande<br>
-                     <span class="conf"><a class="confshort" href="#">ICDCN'18</a> | International Conference on Distributed Computing and Networking</span> <br>
-                     <a class="tag" href="assets/icdcn.pdf" target="_blank">pdf</a><span class="tagsep">|</span>
-                     <a class="tag" href="https://dl.acm.org/doi/10.1145/3154273.3154316" target="_blank">abstract</a><span class="tagsep">|</span>
-                     <a class="tag" href="cites/darshini.bib" target="_blank">cite</a>
-                 </p>
-
-                 <p class="header pt-5">Talks</p>
-                 <div class="py-2">
-                 <p class="paper my-2 pl-2">
-                     <span class="papertitle">Repeatable Data Setup for Repeatable Science</span><br>
-                     Talked about DataDepsGenerators.jl and Reproducible AI.<br>
-                     <span class="conf">PyData 2018, 11 Times Square, New York City, United States</span><br>
-                     <a class="tag" href="https://www.youtube.com/watch?v=eMtuzjn_Xks" target="_blank">video</a><span class="tagsep">|</span>
-                     <a class="tag" href="https://pydata.org/nyc2018/schedule/presentation/14/"
-                         target="_blank">abstract</a>
-                 </p>
-                 </div>
-                 <div class="py-2">
-                 <p class="paper my-2 pl-2">
-                     <span class="papertitle">Tête-à-tête with <a
-                             href="https://en.wikipedia.org/wiki/A._P._J._Abdul_Kalam" target="_blank">APJ Abdul
-                             Kalam</a></span><br>
-                     As part of the Iken Scientifica 2009 winning team, got an opportunity to discuss tech advancements
-                     with His Excellency, Dr. APJ Abdul Kalam, Former President of India.<br>
-                     <span class="conf">10 Rajaji Marg, New Delhi, India</span><br>
-                     <a class="tag" href="https://www.youtube.com/watch?v=oj-rT6CouZg" target="_blank">video</a>
-                 </p>
-                 </div>
-                 </div>
-
-
-                <div class="row text-center py-4">
-                    <div class="mx-auto mt-2">
-                        <img class="img-fluid instilogo p-1" src="images/bitspilani.png">
-                        <div class="institution">BITS Pilani</div>
-                        <div class="years">2015 - 2018</div>
-                    </div>
-                    <div class="mx-auto mt-2">
-                        <img class="img-fluid instilogo p-3" src="images/mozilla1.png">
-                        <div class="institution">Mozilla</div>
-                        <div class="years">S2017</div>
-                    </div>
-                    <div class="mx-auto mt-2">
-                        <img class="img-fluid instilogo p-2" src="images/julia1.png">
-                        <div class="institution">Julia Computing</div>
-                        <div class="years">S2018</div>
-                    </div>
-                    <div class="mx-auto mt-2">
-                        <img class="img-fluid instilogo p-3" src="images/ucl1.png">
-                        <div class="institution">University College London</div>
-                        <div class="years">S2018</div>
-                    </div>
-                    <div class="mx-auto mt-2">
-                        <img class="img-fluid instilogo p-1" src="images/CMU1.png">
-                        <div class="institution">Carnegie Mellon</div>
-                        <div class="years">F2018</div>
-                    </div>
-                    <div class="mx-auto mt-2">
-                        <img class="img-fluid instilogo p-2" src="images/microsoft_research_logo.jpg">
-                        <div class="institution">Microsoft Research</div>
-                        <div class="years">2019 - Present</div>
-                    </div>
-                </div>
-
-            </div>
-            
+  <!-- Header -->
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+<!------
+<div class="container">
+  <img src="file:///storage/emulated/0/Download/pavan/Cyber Fox.png" alt="Cinque Terre" width="10" height="20">
+  <div class="topleft">Top Left</div>
+</div>
+---------------->
+      <a href="#hero"><h1><span>C</span>yber &nbsp<span>F</span>ox &nbsp<span>T</span>echnologys</h1></a>
         </div>
+        <div class="nav-list">
+          <div class="hamburger"><div class="bar"></div></div>
+          <ul>
+         <li><a href="#hero" data-after="Home">Home</a></li>
+         <li><a href="#services" data-after="Service">Services</a></li>
+         <li><a href="#projects" data-after="Projects">Projects</a></li>
+         <li><a href="#about" data-after="About">About</a></li>
+         <li><a href="#contact" data-after="Contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
+  </section>
+  <!-- End Header -->
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="assets/style-3.js"></script>
+
+  <!-- Hero Section  -->
+  <section id="hero">
+    <div class="hero container">
+      <div>
+        <h1>Hello,<span></span></h1>
+        <h1>Welcome To This<span></span></h1>
+        <h1>Cyber World !<span></span></h1>
+   <a href="#services" type="button" class="cta">See Our Services:)</a>
+      </div>
+    </div>
+  </section>
+  <!-- End Hero Section  -->
+
+  <!-- Service Section -->
+  <section id="services">
+    <div class="services container">
+      <div class="service-top">
+        <h1 class="section-title">Our<span>Services</h1>
+        <p><h1>Cyber Fox Technology is a cyber security company  dealing with penetration testing and Security analysis etc.. <br> Our main theme is secure the digital World .we will find out the vulnerabilities on Cloud, Web-Applications, Android & IOS which may take Advantage by hackers and pull down the economy status of a company.
+We are providing almost every cyber security and Programming courses. 
+</h1></p>
+      </div>
+      <div class="service-bottom">
+        <div class="service-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/hacking.png"/></div>
+          <h2>Ethical Hacking</h2>
+          <p>This course assumes you have NO prior knowledge in hacking and by the end of it you'll be able to hack systems like black-hat hackers and secure them like security experts! This course is highly practical but it won't neglect the theory; we'll start with ethical hacking basics, breakdown the different penetration testing fields and install the needed software (on Windows, Linux and Mac OS X), then we'll dive and start hacking straight away. From here onwards you'll learn everything by example, by analysing and exploiting different systems such as networks, servers, clients, websites, etc...
+and also In this Course You will Learn A little bit of Python Programing.  
+</p>
+        </div>
+        <div class="service-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/web.png"/></div>
+          <h2>Web Penetration Testing</h2>
+          <p>In this course, you will start as a beginner with no previous knowledge about penetration testing or hacking. This course is focused on the practical side of penetration testing without neglecting the theory behind each attack. Before jumping into penetration testing, you will first learn how to set up a lab and install needed software to practice penetration testing on your own machine. Then you will learn what is a website, how does it work, what does it rely on, what do mean by a web server, a database, and how all of these components work together to give us functioning websites.</p>
+        </div>
+        <div class="service-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/work.png"/></div>
+          <h2>Network Penetration Testing</h2>
+          <p>This course is focused on the practical side of Network penetration testing without neglecting the theory. Before jumping into hacking you will first learn Networking Concepts and how to set up a lab and install needed software (works on Windows, Mac OS X and Linux), then the course is structured in a way that will take you through the basics of linux, computer systems, networks and how devices communicate with each other, then you will learn how to exploit this method of communication to carry out a number of powerful attacks.</p>
+        </div>
+        <div class="service-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/code.png"/></div>
+          <h2> Python For Ethical Hacking</h2>
+          <p>
+  In This course you'll learn python programming and ethical hacking at the same time, the course assumes you have NO prior knowledge in any of these topics, and by the end of it you'll be at a high intermediate level being able to combine both of these skills and write python programs to hack into computer systems, and use the programming skills you learn to write any program even if it has nothing to do with hacking.
+       </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Service Section -->
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="projects container">
+      <div class="projects-header">
+        <h1 class="section-title">Recent<span>Projects</span></h1>
+      </div>
+      <div class="all-projects">
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Project 1</h1>
+            <h2>Coding is Love</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt harum? Ipsum repellat animi, fugit architecto voluptatum odit et!</p>
+          </div>
+          <div class="project-img">
+            <img src="./img/img-1.png" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Project 2</h1>
+            <h2>Coding is Love</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt harum? Ipsum repellat animi, fugit architecto voluptatum odit et!</p>
+          </div>
+          <div class="project-img">
+            <img src="./img/img-1.png" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Project 3</h1>
+            <h2>Coding is Love</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt harum? Ipsum repellat animi, fugit architecto voluptatum odit et!</p>
+          </div>
+          <div class="project-img">
+            <img src="./img/img-1.png" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Project 4</h1>
+            <h2>Coding is Love</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt harum? Ipsum repellat animi, fugit architecto voluptatum odit et!</p>
+          </div>
+          <div class="project-img">
+            <img src="./img/img-1.png" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Project 5</h1>
+            <h2>Coding is Love</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt harum? Ipsum repellat animi, fugit architecto voluptatum odit et!</p>
+          </div>
+          <div class="project-img">
+            <img src="./img/img-1.png" alt="img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Projects Section -->
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="about container">
+      <div class="col-left">
+        <div class="about-img">
+          <img src="file:///storage/emulated/0/Download/pavan/06317cb1-914e-4ed1-a1fd-84fa35937507.jpeg" alt="img">
+        </div>
+      </div>
+      <div class="col-right">
+        <h1 class="section-title">About<span>me</span></h1>
+        <h2>Ethical Hacker | Cybersecurity Geek</h2>
+        <p>
+ <p>   My name is Pavan kumar, I am an ethical hacker, a Pentester and also Web Devloper. I just love hacking and breaking the rules, but don’t get me wrong as I said I am an ethical hacker.<br>
+ I love to teach Ethical Hacking and Cybersecurity related Topics and also Teach Programming ! I have taught courses on multiple platforms.<br>
+In terms of my certifications, I am currently eWPT, CEH, Cybersecurity Tools & Cyber Attacks (IBM).</p>
+
+     <!----- <a href="#" class="cta">Download Resume</a> ---->
+      </div>
+    </div>
+  </section>
+  <!-- End About Section -->
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="contact container">
+      <div><h1 class="section-title">Contact <span>Us..</span></h1></div>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png"/></div>
+          <div class="contact-info">
+            <h1>Phone</h1>
+            <h2>+91 9866650062</h2>
+            <h2>+91 9347536313</h2>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/new-post.png"/></div>
+          <div class="contact-info">
+            <h1>Email</h1>
+            <h2>Pavanthehacker55@gmail.com</h2>
+            <h2>Pavankumar312003@gmail.com</h2>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/map-marker.png"/></div>
+          <div class="contact-info">
+            <h1>Address</h1>
+            <h2>Guravareddy palem, Ongole, Andhra Pradesh, India</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Section -->
+
+  <!-- Footer -->
+  <section id="footer">
+    <div class="footer container">
+      <div class="brand"><h1><span>C</span>yber<span>F</span>ox<span>T</span>echnology</h1></div>
+      <h2> Your Security is our Priority </h2>
+      <div class="social-icon">
+        <div class="social-item">
+          <a href="https://m.facebook.com/bhanu.b.129"><img src="https://img.icons8.com/bubbles/100/000000/facebook-new.png"/></a>
+        </div>
+        <div class="social-item">
+          <a href="https://www.instagram.com/pavan_the_hacker/?hl=en"><img src="https://img.icons8.com/bubbles/100/000000/instagram-new.png"/></a>
+        </div>
+        <div class="social-item">
+          <a href="https://mobile.twitter.com/Bpavankumarban1"><img src="https://img.icons8.com/bubbles/100/000000/twitter.png"/></a>
+        </div>
+        <div class="social-item">
+          <a href="https://github.com/PavanTheHacker55"><img src="https://img.icons8.com/bubbles/100/000000/github.png"/></a>
+        </div>
+      </div>
+      <p>Copyright © 2020 Pavan Kumar. All rights reserved</p>
+    </div>
+  </section>
+  <!-- End Footer -->
+  <script type="text/javascript">
+const hamburger = document.querySelector('.header .nav-bar .nav-list .hamburger');
+const mobile_menu = document.querySelector('.header .nav-bar .nav-list ul');
+const menu_item = document.querySelectorAll('.header .nav-bar .nav-list ul li a');
+const header = document.querySelector('.header.container');
+
+hamburger.addEventListener('click', () => {
+	hamburger.classList.toggle('active');
+	mobile_menu.classList.toggle('active');
+});
+
+document.addEventListener('scroll', () => {
+	var scroll_position = window.scrollY;
+	if (scroll_position > 250) {
+		header.style.backgroundColor = '#29323c';
+	} else {
+		header.style.backgroundColor = 'transparent';
+	}
+});
+
+menu_item.forEach((item) => {
+	item.addEventListener('click', () => {
+		hamburger.classList.toggle('active');
+		mobile_menu.classList.toggle('active');
+	});
+});
+
+</script>
+
 </body>
-  <style>
-  </style>
 </html>
