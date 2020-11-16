@@ -15,6 +15,26 @@
 	margin: 0;
 	box-sizing: border-box;
 }
+
+
+
+body {
+
+    -youbkit-touch-callout: none; /* iOS Safari */
+
+    -youbkit-user-select: none;   /* Chrome 6.0+, Safari 3.1+, Edge & Opera 15+ */
+
+    -moz-user-select: none;       /* Firefox */
+
+    -ms-user-select: none;        /* IE 10+ and Edge */
+
+    user-select: none;            /* Non-prefixed version,
+
+                                  currently supported by Chrome and Opera */
+
+}
+
+
 html {
 	font-size: 10px;
 	font-family: 'Montserrat', sans-serif;
@@ -997,6 +1017,23 @@ menu_item.forEach((item) => {
 });
 
 </script>
+
+<script>
+ 	window.oncontextmenu = function () { 				
+                    return false;
+ 			} 			
+$(document).keydown(function (event) { 				
+                  if (event.keyCode == 123) { 					
+                    return false;
+
+				} 				else if ((event.ctrlKey && event.shiftKey && event.keyCode == 73) || (event.ctrlKey && event.shiftKey && event.keyCode == 74)) { 			
+		
+return false; 
+
+			} 			}); 	
+
+	</script>
+
 
 </body>
 </html>
