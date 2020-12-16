@@ -3,6 +3,7 @@
 ::selection{
     background: #FFA500;
     color: #000000;
+    filter: blur(3px);
     
 }
 
