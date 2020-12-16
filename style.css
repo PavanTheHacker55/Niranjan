@@ -1,7 +1,7 @@
 @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
 
 ::selection{
-    background: #FFA500;
+    background: blur(3px);
     color: #000000;
     filter: blur(3px);
     
